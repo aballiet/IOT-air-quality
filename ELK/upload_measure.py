@@ -25,10 +25,7 @@ ROOM             = os.getenv('ELK_ROOM')
 HTTP_AUTH = ELK_USER + ':' + ELK_PASSWORD
 
 # Build formatted location for GeoPoint type
-LOCATION = {
-    "lat": float(ELK_LOCATION_LAT),
-    "lon": float(ELK_LOCATION_LON)
-}
+LOCATION = [float(ELK_LOCATION_LAT), float(ELK_LOCATION_LON)]
 
 print('Connecting to ' + HOST + ':' + PORT)
 
