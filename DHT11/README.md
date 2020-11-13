@@ -11,6 +11,7 @@
     sudo apt-get update
     sudo apt-get upgrade
     sudo apt-get autoremove
+    sudo apt install git # Make sure that GIT is installed
     ```
     
     >Note : set-up the ssh server on the raspberry to use it remotely
