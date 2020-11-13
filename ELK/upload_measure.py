@@ -14,14 +14,21 @@ load_dotenv()
 ELK_USER     = os.getenv('ELK_USER')
 ELK_PASSWORD = os.getenv('ELK_PASSWORD')
 
-HOST     = os.getenv('ELK_HOST')
-PORT     = os.getenv('ELK_PORT')
+HOST = os.getenv('ELK_HOST')
+PORT = os.getenv('ELK_PORT')
 
-INDEX    = os.getenv('ELK_INDEX')
-LOCATION = os.getenv('ELK_LOCATION')
-ROOM     = os.getenv('ELK_ROOM')
+INDEX            = os.getenv('ELK_INDEX')
+ELK_LOCATION_LAT = os.getenv('ELK_LOCATION_LAT')
+ELK_LOCATION_LON = os.getenv('ELK_LOCATION_LON')
+ROOM             = os.getenv('ELK_ROOM')
 
 HTTP_AUTH = ELK_USER + ':' + ELK_PASSWORD
+
+# Build formatted location for GeoPoint type
+LOCATION = {
+    "lat": ELK_LOCATION_LAT,
+    "lon": ELK_LOCATION_LON
+}
 
 print('Connecting to ' + HOST + ':' + PORT)
 
@@ -39,7 +46,7 @@ while True:
 
     # Nicely print measure
     datetime_object = datetime.datetime.now().isoformat()
-    print(str(datetime_object) + '| Temp = {0:0.1f} C Humidity: {1:0.1f} %'.format(temperature, humidity))
+    #print(str(datetime_object) + '| Temp = {0:0.1f} C Humidity: {1:0.1f} %'.format(temperature, humidity))
 
     # create JSON data to upload to ElasticSearch
     data = {
@@ -51,7 +58,7 @@ while True:
     }
 
     json_dump = json.dumps(data)
-    #print(json_dump)
+    print(json_dump)
 
     # Upload Data
     res = es.index(index=INDEX, body=json_dump)
