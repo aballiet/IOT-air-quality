@@ -10,5 +10,5 @@
     ```
 - python ElasticSearch
    ```bash
-    pip install ElasticSearch
+    pip install elasticsearch
     ```

@@ -6,15 +6,14 @@ from elasticsearch import Elasticsearch
 # Find the dotenv in the current directory
 load_dotenv()
 
-ELK_USER     = os.getenv("USER")
-ELK_PASSWORD = os.getenv('PASSWORD')
+ELK_USER     = os.getenv('ELK_USER')
+ELK_PASSWORD = os.getenv('ELK_PASSWORD')
 
-HOST      = os.getenv("HOST")
-PORT      = os.getenv('PORT')
+HOST      = os.getenv('ELK_HOST')
+PORT      = os.getenv('ELK_PORT')
 HTTP_AUTH = ELK_USER + ':' + ELK_PASSWORD
 
-print("Connecting to " + HOST + PORT)
-print(HTTP_AUTH)
+print('Connecting to ' + HOST + ':' + PORT)
 
 # Create the ElasticSearch connector instance
 es = Elasticsearch([{
