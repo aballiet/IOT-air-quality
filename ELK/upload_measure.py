@@ -27,7 +27,27 @@ es = Elasticsearch([{
     http_auth=HTTP_AUTH
 )
 
+index = 'gang-sensor-test'
+
 while True:
-    humidity, temperature = Adafruit_DHT.read_retry(11, 4) # retrieve data from DHT11 sensor
-    datetime_object = datetime.datetime.now()
-    print('{} | Temp = {0:0.1f} C Humidity: {1:0.1f} %'.format(datetime_object, temperature, humidity))
+    # retrieve data from DHT11 sensor
+    humidity, temperature = Adafruit_DHT.read_retry(11, 4)
+
+    # Nicely print measure
+    datetime_object = datetime.datetime.now().isoformat()
+    print(str(datetime_object) + '| Temp = {0:0.1f} C Humidity: {1:0.1f} %'.format(temperature, humidity))
+
+    # create JSON data to upload to ElasticSearch
+    data = {
+        "@timestamp": str(datetime_object),
+        "humidity": humidity,
+        "temperature": temperature,
+        "room": 'Antoine'
+    }
+
+    json_dump = json.dumps(data)
+    #print(json_dump)
+
+    # Upload Data
+    res = es.index(index=index, body=json_dump)
+    print(res['result'])
