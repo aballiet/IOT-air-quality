@@ -26,8 +26,8 @@ HTTP_AUTH = ELK_USER + ':' + ELK_PASSWORD
 
 # Build formatted location for GeoPoint type
 LOCATION = {
-    "lat": ELK_LOCATION_LAT,
-    "lon": ELK_LOCATION_LON
+    "lat": float(ELK_LOCATION_LAT),
+    "lon": float(ELK_LOCATION_LON)
 }
 
 print('Connecting to ' + HOST + ':' + PORT)
