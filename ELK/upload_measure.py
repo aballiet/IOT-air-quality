@@ -61,5 +61,5 @@ while True:
     print(json_dump)
 
     # Upload Data
-    res = es.index(index=INDEX, body=json_dump)
+    res = es.index(index=INDEX, doc_type='demo', body=json_dump)
     print(res['result'])
