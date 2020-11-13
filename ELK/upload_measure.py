@@ -3,6 +3,7 @@ import os
 import sys
 import Adafruit_DHT
 import datetime
+import json
 
 from dotenv import load_dotenv, find_dotenv
 from elasticsearch import Elasticsearch
@@ -18,7 +19,7 @@ PORT     = os.getenv('ELK_PORT')
 
 INDEX    = os.getenv('ELK_INDEX')
 LOCATION = os.getenv('ELK_LOCATION')
-ROOM     = os.getenv('ELK_ROMM')
+ROOM     = os.getenv('ELK_ROOM')
 
 HTTP_AUTH = ELK_USER + ':' + ELK_PASSWORD
 
