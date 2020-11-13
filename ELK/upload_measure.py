@@ -13,8 +13,13 @@ load_dotenv()
 ELK_USER     = os.getenv('ELK_USER')
 ELK_PASSWORD = os.getenv('ELK_PASSWORD')
 
-HOST      = os.getenv('ELK_HOST')
-PORT      = os.getenv('ELK_PORT')
+HOST     = os.getenv('ELK_HOST')
+PORT     = os.getenv('ELK_PORT')
+
+INDEX    = os.getenv('ELK_INDEX')
+LOCATION = os.getenv('ELK_LOCATION')
+ROOM     = os.getenv('ELK_ROMM')
+
 HTTP_AUTH = ELK_USER + ':' + ELK_PASSWORD
 
 print('Connecting to ' + HOST + ':' + PORT)
@@ -26,8 +31,6 @@ es = Elasticsearch([{
     }],
     http_auth=HTTP_AUTH
 )
-
-index = 'gang-sensor-test'
 
 while True:
     # retrieve data from DHT11 sensor
@@ -42,12 +45,13 @@ while True:
         "@timestamp": str(datetime_object),
         "humidity": humidity,
         "temperature": temperature,
-        "room": 'Antoine'
+        "location": LOCATION,
+        "room": ROOM
     }
 
     json_dump = json.dumps(data)
     #print(json_dump)
 
     # Upload Data
-    res = es.index(index=index, body=json_dump)
+    res = es.index(index=INDEX, body=json_dump)
     print(res['result'])
