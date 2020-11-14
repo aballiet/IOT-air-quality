@@ -8,6 +8,7 @@ load_dotenv()
 
 ELK_USER     = os.getenv('ELK_USER')
 ELK_PASSWORD = os.getenv('ELK_PASSWORD')
+INDEX        = os.getenv('ELK_INDEX')
 
 HOST      = os.getenv('ELK_HOST')
 PORT      = os.getenv('ELK_PORT')
@@ -23,6 +24,5 @@ es = Elasticsearch([{
     http_auth=HTTP_AUTH
 )
 
-res = es.search(index='gang-news', filter_path=['hits.hits._id', 'hits.hits._type'])
-
-print(res)
+res = es.cat.count(INDEX, params={"format": "json"})
+print("Count: {}".format(res[0]["count"]))
