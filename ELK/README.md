@@ -22,8 +22,23 @@ ELK_PASSWORD=
 ELK_HOST= A_RUNNING_COMPUTER_OF_THE_CLUSTER
 ELK_PORT= 9200
 ELK_INDEX= DESIRED_INDEX
-ELK_LOCATION= YOUR_GPS_COORDINATE IN FORMAT "lat, long"
+ELK_LOCATION_LAT=
+ELK_LOCATION_LON=
 ELK_ROOM= YOUR_ROOM_NAME
+```
+
+## Test the connection
+
+```bash
+python test_connection.py
+```
+
+You should get the number of document for the `Index` you specified in the `.env` similar to this:
+
+```bash
+pi@raspberrypi:~/IOT/IOT-air-quality/ELK $ python test_connection.py
+Connecting to XXXXXXXXXXXXXXXXXXX
+Count: 11176
 ```
 
 ## Send the measures to ELK cluster
