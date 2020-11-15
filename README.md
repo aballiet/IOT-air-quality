@@ -2,9 +2,9 @@
 
 This project aims at creating a portable device that allows you to monitor air quality.
 
-<img src="./ELK/chart_elk_temp_humidity.png" alt="Your image title" width="400" align="left"/>
+<img src="./ELK/chart_elk_temp_humidity.png" alt="Your image title" width="600"/>
 
-<img src="./ThingSpeak/chart_ts_humidity_temperature.png" alt="Your image title" width="400" align="right"/>
+<img src="./ThingSpeak/chart_ts_humidity_temperature.png" alt="Your image title" width="600"/>
 
 1. [Requirements 📜](<##Requirements 📜>)
 1. [Getting started 🚦](<##Getting started 🚦>)
