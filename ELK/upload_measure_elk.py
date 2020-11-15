@@ -5,7 +5,7 @@ import Adafruit_DHT
 import datetime
 import json
 
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 from elasticsearch import Elasticsearch
 
 # Find the dotenv in the current directory

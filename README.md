@@ -13,16 +13,20 @@ This project aims at creating a portable device that allows you to monitor air q
 
 ## Getting started 🚦
 
-Setup the project by following these steps
+### Setup the project by running these commands on your raspberry
 
 ```bash
 cd                          # go at your home directory
 mkdir IOT && cd ./IOT       # create IOT directory and enter in it
+sudo apt install git # Make sure that GIT is installed
 git clone https://github.com/aballiet/IOT-air-quality.git
 ```
 
 1. **[Setup your DHT11 sensor](./DHT11/README.md)**
-1. **[Setup a single ELK node](./ELK/README.md)**
+1. Choose your Database platform 
+    - **[Ready to use ThingSpeak](./ThingSpeak/README.md)** : no requirement
+    - **[Setup a single ELK node](./ELK/README.md)** : requires a server instance
+
 
 ## Automate with crontab 🤖
 Once everything is setup, you can automate the uploading/measuring task thanks to crontab.
