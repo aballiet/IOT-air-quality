@@ -17,14 +17,7 @@ humidity, temperature = Adafruit_DHT.read_retry(11, 4)
 print('Temp = {0:0.1f} C Humidity: {1:0.1f} %'.format(temperature, humidity))
 
 base_url = 'https://api.thingspeak.com/update?api_key=' + API_KEY
-url_1 = base_url + '&field1=' + str(humidity)
-url_2 = base_url + '&field2=' + str(temperature)
+url = base_url + '&field1=' + str(humidity) + '&field2=' + str(temperature)
 
-res = requests.get(url_1)
+res = requests.get(url)
 print(res)
-
-res = requests.get(url_2)
-print(res)
-
-
-
