@@ -25,21 +25,23 @@ ThingSpeak provides channels (kind of pipeline) that allow you to store your dat
     There are 2 types of keys:
     - Write key - the one we need to send data to our Database
     - Read key  - used in order to perform request on our already saved data
-    
-1. setup the environment
 
+## Raspberry PI
 ```bash
 cd ThingSpeak
 nano .env
 ```
-add the line :
+add the line and specify your API Key:
 ```bash
 TS_API_KEY_WRITE=<YOUR_WRITE_API_KEY>
 ```
 
+## ESP8266 Module
+Edit the file [`upload_measure_arduino.ino`](./upload_measure_arduino/upload_measure_arduino.ino) and specify your own values for WiFi connection and ThingSpeak channel :
 
-
-
-
-    
-
+```arduino
+const char* ssid     = <SSID>;
+const char* password = <PASSWORD>;
+const char* API_KEY  = <WRITE_API_KEY>;
+const int delay_post = 600000; // each 10 minutes
+```

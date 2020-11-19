@@ -1,11 +1,12 @@
 # Setup DHT11 sensor
 
-## Requirements 📜
+## Raspberry
+### Requirements 📜
 - Raspberry pi (3B model used)
 - DHT11 sensor (3 pins model)
-- 4 wires
+- 3 wires
 
-## Getting started 🚦
+### Getting started 🚦
 - **Install the raspbian OS on the SD card and make sure everything is up to date** by running the following commands:
     ```bash
     sudo apt-get update
@@ -77,4 +78,10 @@
     ```
 
 To be continued...
-    
+
+## ESP8266
+### Requirements 📜
+- ESP8266 like module
+- DHT11 sensor (3 pins model)
+- 3 wires
+![DHT11_esp](./DHT11_esp8266.png)

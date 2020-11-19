@@ -6,18 +6,18 @@ This project aims at creating a portable device that allows you to monitor air q
 
 <img src="./ThingSpeak/chart_ts_humidity_temperature.png" alt="Your image title" width="600"/>
 
-1. [Requirements 📜](<##Requirements 📜>)
-1. [Getting started 🚦](<##Getting started 🚦>)
-1. [Automate with crontab 🤖](<##Automate with crontab 🤖>)
+1. [Requirements 📜](<#Requirements 📜>)
+1. [Getting started 🚦](<#Getting started 🚦>)
+1. [Automate with crontab (raspberry only) 🤖](<#Automate with crontab (raspberry only) 🤖>)
 
-## Requirements 📜
-- Raspberry pi (3B model used)
+# Requirements 📜
+- **Raspberry pi** (3B model used) OR **ESP8266 Module**
 - DHT11 sensor (3 pins model)
 - 3 wires
 
-## Getting started 🚦
+# Getting started 🚦
 
-### Setup the project by running these commands on your raspberry
+### Setup the project by running these commands on your raspberry (or computer if ESP8266 targeted)
 
 ```bash
 cd                          # go at your home directory
@@ -31,7 +31,7 @@ git clone https://github.com/aballiet/IOT-air-quality.git
     - **[Ready to use ThingSpeak](./ThingSpeak/README.md)** : no requirements
     - **[Setup a single ELK node](./ELK/README.md)** : requires a server instance
 
-## Automate with crontab 🤖
+## Automate with crontab (raspberry only) 🤖
 Once everything is setup, you can automate the uploading/measuring task thanks to crontab.
 
 ```bash
