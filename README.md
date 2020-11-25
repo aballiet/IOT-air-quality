@@ -6,8 +6,7 @@ This project aims at creating a portable device that allows you to monitor air q
 
 # Requirements 📜
 - **Raspberry pi** (3B model used) OR **ESP8266 Module**
-- DHT11 sensor (3 pins model)
-- 3 wires
+- DHT11 sensor (3 pins model) or BME680 sensor (4 wires required)
 
 # Getting started 🚦
 

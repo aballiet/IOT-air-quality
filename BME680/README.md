@@ -57,12 +57,12 @@ You can install it by using the Arduino Library Manager :
 
 - Open the [BOSCH-BSEC-test.ino](./BOSCH-BSEC-test/BOSCH-BSEC-test.ino) with your favorite editor
 
-    - If you had an **adress** = **0x76**, make sure that 18th line of the file is as follow : 
+    - If you had an **address** = **0x76**, make sure that 18th line of the file is as follow : 
         ```c
         iaqSensor.begin(BME680_I2C_ADDR_PRIMARY, Wire);
         ```
 
-    - If you had an **adress** = **0x77**, make sure that 18th line of the file is as follow : 
+    - If you had an **address** = **0x77**, make sure that 18th line of the file is as follow : 
         ```c
         iaqSensor.begin(BME680_I2C_ADDR_SECONDARY, Wire);
         ```

@@ -37,7 +37,7 @@ TS_API_KEY_WRITE=<YOUR_WRITE_API_KEY>
 ```
 
 ## ESP8266 Module
-Edit the file [`upload_measure_arduino.ino`](./upload_measure_arduino/upload_measure_arduino.ino) and specify your own values for WiFi connection and ThingSpeak channel :
+Edit the file [`upload_DHT11.ino`](./upload_DHT11/upload_DHT11.ino) and specify your own values for WiFi connection and ThingSpeak channel :
 
 ```arduino
 const char* ssid     = <SSID>;
@@ -45,3 +45,5 @@ const char* password = <PASSWORD>;
 const char* API_KEY  = <WRITE_API_KEY>;
 const int delay_post = 600000; // each 10 minutes
 ```
+
+You have to do the same thing for the [`upload_BME680.ino`](./upload_BME680/upload_BME680.ino).
