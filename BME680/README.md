@@ -77,3 +77,44 @@ You can install it by using the Arduino Library Manager :
     Timestamp [ms], raw temperature [°C], pressure [hPa], raw relative humidity [%], gas [Ohm], IAQ, IAQ accuracy, temperature [°C], relative humidity [%], Static IAQ, CO2 equivalent, breath VOC equivalent
     98, 25.36, 99673.00, 28.73, 287150.00, 25.00, 0, 25.36, 28.73, 25.00, 400.00, 0.50
     ```
+
+In order to be able to exploit full features of the BME680 and avoid the `Error Code : 10`, we will need to edit the `platform.txt` in `C:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\YOUR_VERSION` as explained in the [Bosch Tutorial](https://github.com/BoschSensortec/BSEC-Arduino-library) :
+
+## Modify the platform.txt file
+
+If you have already used the previous example code and hack guide, remove the linker flag `-libalgobsec` in the platform.txt file and reference to the `compiler.c.elf.extra_flags`.
+
+The standard arduino-builder now passes the linker flags under `compiler.libraries.ldflags`. Most platform.txt files do not already include this new optional variable. You will hence need to declare this variable's default and add it to the end of the combine recipe. It is recommended to declare it in the following section like below,
+
+```
+# These can be overridden in platform.local.txt
+compiler.c.extra_flags=
+compiler.c.elf.extra_flags=
+#compiler.c.elf.extra_flags=-v
+compiler.cpp.extra_flags=
+compiler.S.extra_flags=
+compiler.ar.extra_flags=
+compiler.elf2hex.extra_flags=
+compiler.libraries.ldflags=
+```
+
+and add it in the combine recipe like the below examples
+
+#### ESP8266 community forum's ESP8266 core
+
+Original line [105](https://github.com/esp8266/Arduino/blob/68ee1216454eeea49dd3452c6ff21bc748f397b6/platform.txt#L105),
+
+```
+## Combine gc-sections, archives, and objects
+recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {build.exception_flags} -Wl,-Map "-Wl,{build.path}/{build.project_name}.map" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" -Wl,--start-group {object_files} "{archive_file_path}" {compiler.c.elf.libs} -Wl,--end-group  "-L{build.path}"
+```
+
+should become
+
+```
+## Combine gc-sections, archives, and objects
+recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {build.exception_flags} -Wl,-Map "-Wl,{build.path}/{build.project_name}.map" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" -Wl,--start-group {object_files} "{archive_file_path}" {compiler.c.elf.libs} {compiler.libraries.ldflags} -Wl,--end-group  "-L{build.path}"
+```
+
+
+
